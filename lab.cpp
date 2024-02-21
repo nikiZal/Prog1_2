@@ -1,10 +1,13 @@
 #include <iostream>
+#include <string>
+#include <cstring>
 
 using namespace std;
 
 
 class Film {
 private:
+    static int numOfFilms;
     string name;
     int duration;
     double rating;
@@ -15,11 +18,30 @@ public:
     void setRating (double newRating) {
         rating = newRating;
     }
-    void getAll () {
-        cout << "Name: " << name << endl
-             << "Duration: " << duration << endl
-             << "Rating: " << rating << endl;
+    void getStatic () {
+        cout << "value of static: " << numOfFilms << endl;
     }
+    static void changeNumOfFilms (int a) {
+        numOfFilms += a;
+    } 
+
+    friend ostream &operator<<(ostream &os, const Film &obj) {
+        os << "Name: " << obj.name << endl
+           << "Duration: " << obj.duration << endl
+           << "Rating: " << obj.rating << endl;
+        return os;
+    }
+    friend istream &operator>>(istream &is, Film &obj) {
+        is >> obj.name >> obj.duration >> obj.rating;
+        return is;
+    }
+    bool operator==(const Film &comparedFilm) const{
+        if (this->name == comparedFilm.name && this->duration == comparedFilm.duration && this->rating == comparedFilm.rating) {
+            return true;
+        }
+        return false;
+    };
+
 
     Film () 
         : Film{"None", 0, 0.0} {};
@@ -27,10 +49,16 @@ public:
         : Film{newName, 0, 0.0} {};
     Film (string newName, int newDuration) 
         : Film{newName, newDuration, 0.0} {};
+    Film (const Film &otherFilm) 
+        : Film{otherFilm.name, otherFilm.duration, otherFilm.rating} {}; 
     Film(string newName, int newDuration, double newRating) 
-        : name{newName}, duration{newDuration}, rating{newRating} {};
-    ~Film() {};
+        : name{newName}, duration{newDuration}, rating{newRating} {changeNumOfFilms(1);};
+    ~Film() {changeNumOfFilms(-1);};
 };
+
+int Film::numOfFilms = 0;
+
+
 
 class Serial {
 private:
@@ -110,21 +138,20 @@ public:
 
 
 int main () {
-    Anime jojo("JoJo", 24, 20, "davidProduction");
-    jojo.getAll();
-    cout << endl;
-    jojo.setRating(7.88);
-    cout << endl;
-    jojo.getAll();
+    Film duna("Duna", 180, 8.5);
+    duna.getStatic();
+    
+    Film duna2(duna);
+    if (duna == duna2) {
+        cout << "OMG THEY ARE SIMILAR" << endl;
+    }
+    duna2.setName("Duna 2");
 
-    cout << endl << "-----------------------------" << endl << endl;
+    Film duna3, duna4;
+    cin >> duna3 >> duna4;
+    cout << duna4 << duna3 << duna2 << duna;
 
-    Serial friends("Friends", 100, 45, 9.5);
-    friends.getAll();
-
-    cout << endl << "-----------------------------" << endl << endl;
-
-    Film duna("Duna", 150, 8.0);
-    duna.getAll();
+    //duna2.~Film();
+    duna2.getStatic();
     return 0;
 }
