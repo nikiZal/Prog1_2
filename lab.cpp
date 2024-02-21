@@ -2,9 +2,6 @@
 
 using namespace std;
 
-// База даних фільмів
-
-
 
 class Film {
 private:
@@ -113,7 +110,7 @@ public:
 
 
 int main () {
-    Anime jojo("JoJo", 24, 20, "davidProduction", 8.8);
+    Anime jojo("JoJo", 24, 20, "davidProduction");
     jojo.getAll();
     cout << endl;
     jojo.setRating(7.88);
