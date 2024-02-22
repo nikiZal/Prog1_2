@@ -8,35 +8,35 @@ using namespace std;
 class Film {
 private:
     static int numOfFilms;
-    string name;
+    string *name;
     int duration;
     double rating;
 public:
     void setName (string newName) {
-        name = newName;
+        *name = newName;
     }
     void setRating (double newRating) {
         rating = newRating;
     }
     void getStatic () {
-        cout << "value of static: " << numOfFilms << endl;
+        cout << "Value of static: " << numOfFilms << endl;
     }
     static void changeNumOfFilms (int a) {
         numOfFilms += a;
     } 
 
     friend ostream &operator<<(ostream &os, const Film &obj) {
-        os << "Name: " << obj.name << endl
+        os << "Name: " << *(obj.name) << endl
            << "Duration: " << obj.duration << endl
            << "Rating: " << obj.rating << endl;
         return os;
     }
     friend istream &operator>>(istream &is, Film &obj) {
-        is >> obj.name >> obj.duration >> obj.rating;
+        is >> *(obj.name) >> obj.duration >> obj.rating;
         return is;
     }
     bool operator==(const Film &comparedFilm) const{
-        if (this->name == comparedFilm.name && this->duration == comparedFilm.duration && this->rating == comparedFilm.rating) {
+        if (*(this->name) == *(comparedFilm.name) && this->duration == comparedFilm.duration && this->rating == comparedFilm.rating) {
             return true;
         }
         return false;
@@ -50,10 +50,18 @@ public:
     Film (string newName, int newDuration) 
         : Film{newName, newDuration, 0.0} {};
     Film (const Film &otherFilm) 
-        : Film{otherFilm.name, otherFilm.duration, otherFilm.rating} {}; 
-    Film(string newName, int newDuration, double newRating) 
-        : name{newName}, duration{newDuration}, rating{newRating} {changeNumOfFilms(1);};
-    ~Film() {changeNumOfFilms(-1);};
+        : Film{*(otherFilm.name), otherFilm.duration, otherFilm.rating} {}; 
+    Film(string newName, int newDuration, double newRating) {
+        name = new string;
+        *name = newName;
+        duration = newDuration;
+        rating = newRating;
+        changeNumOfFilms(1);
+    };
+    ~Film() {
+        delete name; 
+        changeNumOfFilms(-1);
+    };
 };
 
 int Film::numOfFilms = 0;
@@ -62,22 +70,23 @@ int Film::numOfFilms = 0;
 
 class Serial {
 private:
-    string name;
+    string *name;
     int episodDuration;
     int numberOfEpisodes;
     double rating;
 public:
     void setName (string newName) {
-        name = newName;
+        *name = newName;
     }
     void setRating (double newRating) {
         rating = newRating;
     }
-    void getAll () {
-        cout << "Name: " << name << endl
-             << "Episodes: " << numberOfEpisodes << endl
-             << "Duration: " << episodDuration << endl
-             << "Rating: " << rating << endl;
+
+    friend ostream operator<<(ostream &os, const Serial &obj) {
+        cout << "Name: " << obj.name << endl
+             << "Episodes: " << obj.numberOfEpisodes << endl
+             << "Duration: " << obj.episodDuration << endl
+             << "Rating: " << obj.rating << endl;
     }
 
     Serial () 
@@ -88,9 +97,13 @@ public:
         : Serial{newName, newNumberOfEpisodes, 0, 0.0} {};
     Serial (string newName, int newNumberOfEpisodes, int newEpisodDuration) 
         : Serial{newName, newNumberOfEpisodes, newEpisodDuration, 0.0} {};
-    Serial(string newName, int newNumberOfEpisodes, int newEpisodDuration, double newRating) 
-        : name{newName}, numberOfEpisodes{newNumberOfEpisodes}, episodDuration{newEpisodDuration}, rating{newRating} {};
-    ~Serial() {};
+    Serial(string newName, int newNumberOfEpisodes, int newEpisodDuration, double newRating) {
+        name = new string;
+        *name = newName;
+        episodDuration = newEpisodDuration;
+        rating = newRating;
+    };
+    ~Serial() {delete name;};
 };
 
 class Anime {
@@ -136,22 +149,22 @@ public:
 };
 
 
-
 int main () {
     Film duna("Duna", 180, 8.5);
     duna.getStatic();
-    
+
     Film duna2(duna);
     if (duna == duna2) {
-        cout << "OMG THEY ARE SIMILAR" << endl;
+        cout << "OMG THEY ARE SIMILAR" << endl << endl;
     }
+
     duna2.setName("Duna 2");
+    cout << duna << duna2 << endl;
 
-    Film duna3, duna4;
-    cin >> duna3 >> duna4;
-    cout << duna4 << duna3 << duna2 << duna;
-
-    //duna2.~Film();
+    duna2.getStatic();
+    duna2.~Film();
+    cout << "Destructor was called." << endl;
     duna2.getStatic();
     return 0;
+
 }
