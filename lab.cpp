@@ -51,11 +51,8 @@ public:
         : Film{newName, newDuration, 0.0} {};
     Film (const Film &otherFilm) 
         : Film{*(otherFilm.name), otherFilm.duration, otherFilm.rating} {}; 
-    Film(string newName, int newDuration, double newRating) {
-        name = new string;
-        *name = newName;
-        duration = newDuration;
-        rating = newRating;
+    Film(string newName, int newDuration, double newRating) 
+        : name{new string (newName)}, duration{newDuration}, rating{newRating} {
         changeNumOfFilms(1);
     };
     ~Film() {
@@ -97,12 +94,8 @@ public:
         : Serial{newName, newNumberOfEpisodes, 0, 0.0} {};
     Serial (string newName, int newNumberOfEpisodes, int newEpisodDuration) 
         : Serial{newName, newNumberOfEpisodes, newEpisodDuration, 0.0} {};
-    Serial(string newName, int newNumberOfEpisodes, int newEpisodDuration, double newRating) {
-        name = new string;
-        *name = newName;
-        episodDuration = newEpisodDuration;
-        rating = newRating;
-    };
+    Serial (string newName, int newNumberOfEpisodes, int newEpisodDuration, double newRating) 
+        : name{new string(newName)}, numberOfEpisodes{newNumberOfEpisodes}, episodDuration(newEpisodDuration), rating{newRating} {};
     ~Serial() {delete name;};
 };
 
