@@ -1,0 +1,3 @@
+D:/studying/prog/labs1_2/Prog1_2/cmake-build-debug/CMakeFiles/test.dir
+D:/studying/prog/labs1_2/Prog1_2/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/studying/prog/labs1_2/Prog1_2/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,13 @@
+# ninja log v5
+8	1625	7311652597899954	CMakeFiles/test.dir/classes/Cartoon.cpp.obj	22b9c5420dcd0096
+14	1255	7311652594191804	CMakeFiles/test.dir/classes/Achievements.cpp.obj	1e7007979caaa777
+0	911	7311651186028466	CMakeFiles/Prog1_2.dir/main.cpp.obj	919a1adeac16e75
+1	1688	7311652598554419	CMakeFiles/test.dir/main.cpp.obj	b1fc3173ef4b777f
+29	195	7311652583583155	CMakeFiles/test.dir/classes/Rights.cpp.obj	5f285f9545f2a397
+196	1853	7311652600206762	CMakeFiles/test.dir/classes/User.cpp.obj	9269c5b523a0a7d8
+22	1585	7311652597524148	CMakeFiles/test.dir/classes/MediaProduction.cpp.obj	554bec28e18fce44
+36	1756	7311652599229985	CMakeFiles/test.dir/classes/Film.cpp.obj	f5757155fef21b62
+1853	2039	7311652602017051	test.exe	92e41a79a02c0f6e
+1	251	7311652920277238	build.ninja	e720c042a5d18edc
+10	1949	7311653141487500	CMakeFiles/test.dir/main.cpp.obj	b1fc3173ef4b777f
+1949	2160	7311653143538794	test.exe	92e41a79a02c0f6e
