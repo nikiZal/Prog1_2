@@ -28,3 +28,12 @@ Cartoon::Cartoon(string newName, double newRating, int newEpisodes, int newDurat
         : MediaProduction(newName, newRating, newEpisodes, newDuration), style{newStyle}, voiceActors{newVoiceActors} {};
 
 Cartoon::~Cartoon() {};
+
+
+void Cartoon::print(ostream &os) const {
+    os << "Style: " << this->style << endl;
+}
+
+void Cartoon::test() {
+    cout << "Virtual Cartoon test";
+}

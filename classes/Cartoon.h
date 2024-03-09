@@ -23,6 +23,9 @@ public:
     Cartoon(string newName, double newRating, int newEpisodes, int newDuration, string newStyle);
     Cartoon(string newName, double newRating, int newEpisodes, int newDuration, string newStyle, set <string> newVoiceActors);
     ~Cartoon();
+
+    void print(ostream &os) const override;
+    void test() override;
 };
 
 

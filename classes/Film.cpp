@@ -44,7 +44,9 @@ void Film::print(ostream &os) const {
     os << "Country: " << this->country;
 };
 
-
+void Film::test() {
+    cout << "Virtual Film test";
+}
 
 
 

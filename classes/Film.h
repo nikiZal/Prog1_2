@@ -27,6 +27,7 @@ public:
 
 
     void print(ostream &os) const override;
+    void test() override;
 
     Film &operator=(const Film &obj);
 };

@@ -29,6 +29,7 @@ public:
 
     static int getStatic();
     virtual void print(ostream &os) const = 0;
+    virtual void test() = 0;
 
 
     friend ostream &operator<<(ostream &os, MediaProduction &obj);

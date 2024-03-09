@@ -33,5 +33,8 @@ int main () {
     MediaProduction &bLink = b;
     cout << bLink.getStatic() << endl; // TASK 3
 
+    MediaProduction *c = new Cartoon;
+    cout << *c << endl;
+
     return 0;
 }
