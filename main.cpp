@@ -11,19 +11,27 @@ using namespace std;
 #include "classes/Rights.h"
 #include "classes/User.h"
 
-
+#include "test.h"
 
 int MediaProduction::amountOfMedia = 0;
 int main () {
 
-    Film bnh("BNH", 0, 0, 0, "USA", {"Horror", "Comedy"});
-    Film bnh2(bnh);
+
+    /* TASK 1 */
+    // Test a;
+    // Test *b = new Test1;
+    // Test1 *c = new Test2;
+
+    // b->printHello(); 
+    // c->printHello();
 
 
-    bnh2.changeName("MAMA MIA");
-    cout << bnh2 << endl;
+    MediaProduction *a = new Film;
+    cout << *a << endl; // TASK 6
 
+    Film b;
+    MediaProduction &bLink = b;
+    cout << bLink.getStatic() << endl; // TASK 3
 
     return 0;
-
 }

@@ -25,10 +25,11 @@ public:
     MediaProduction(string newName, double newRating, int newEpisodes);
     MediaProduction(string newName, double newRating, int newEpisodes, int newDuration);
     MediaProduction(const MediaProduction &obj);
-    ~MediaProduction();
+    virtual ~MediaProduction();
 
     static int getStatic();
-    void changeName(string &&newName);
+    virtual void print(ostream &os) const = 0;
+
 
     friend ostream &operator<<(ostream &os, MediaProduction &obj);
     MediaProduction &operator=(const MediaProduction &obj);

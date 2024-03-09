@@ -38,6 +38,18 @@ Film::~Film() {
 
 
 
+
+
+void Film::print(ostream &os) const {
+    os << "Country: " << this->country;
+};
+
+
+
+
+
+
+
 Film &Film::operator=(const Film &obj) {
     if (this != &obj) {
         MediaProduction::operator=(obj);

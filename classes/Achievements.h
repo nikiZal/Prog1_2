@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 
-class Achievements {
+class Achievements final {
 private:
      static int amountOfAchievements;
      int id;
@@ -16,7 +16,7 @@ private:
 
 
 
-
+// class testAchievements : public Achievements {};
 
 
 #endif

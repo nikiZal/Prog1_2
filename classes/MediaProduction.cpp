@@ -28,19 +28,19 @@ MediaProduction::MediaProduction(const MediaProduction &obj)
 MediaProduction::~MediaProduction() {
     cout << "MediaProd DESTRUCT" << endl;
 };
-    
+
+
+
+
 int MediaProduction::getStatic() {
     return amountOfMedia;
 }
 
-void MediaProduction::changeName(string &&newName) {
-    this->name = newName;
-}
+
 
 
 ostream &operator<<(ostream &os, MediaProduction &obj) {
-    os << "ID: " << obj.id << endl
-        << "Name: " <<obj.name << endl;
+    obj.print(os);
     return os;
 }
 

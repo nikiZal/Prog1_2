@@ -26,6 +26,8 @@ public:
     ~Film();
 
 
+    void print(ostream &os) const override;
+
     Film &operator=(const Film &obj);
 };
 
