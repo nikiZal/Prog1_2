@@ -19,9 +19,8 @@ public:
     Cartoon(string newName);
     Cartoon(string newName, double newRating);
     Cartoon(string newName, double newRating, int newEpisodes);
-    Cartoon(string newName, double newRating, int newEpisodes, int newDuration);
-    Cartoon(string newName, double newRating, int newEpisodes, int newDuration, string newStyle);
-    Cartoon(string newName, double newRating, int newEpisodes, int newDuration, string newStyle, set <string> newVoiceActors);
+    Cartoon(string newName, double newRating, int newEpisodes, string newStyle);
+    Cartoon(string newName, double newRating, int newEpisodes, string newStyle, set <string> newVoiceActors);
     ~Cartoon();
 
     void print(ostream &os) const override;

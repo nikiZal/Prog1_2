@@ -3,3 +3,5 @@
 *.exe
 cmake-build-debug/
 .idea/
+Films.txt
+Log.txt
